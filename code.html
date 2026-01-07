@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+
+<html class="light" lang="pt-BR"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Convite de Casamento Mobile</title>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,100..900;1,100..900&amp;family=Noto+Sans:wght@100..900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Theme Configuration -->
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#546a2f", // Olive Green
+                        "primary-dark": "#414b33", // Darker Olive for text
+                        "background-light": "#FFFAF4", // Warm Cream
+                        "background-dark": "#1a1d15",
+                    },
+                    fontFamily: {
+                        "display": ["Noto Serif", "serif"],
+                        "sans": ["Noto Sans", "sans-serif"],
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "2xl": "1rem",
+                        "full": "9999px"
+                    },
+                    backgroundImage: {
+                        'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark min-h-screen flex flex-col items-center justify-center font-display antialiased selection:bg-primary/30 selection:text-primary-dark">
+<!-- Top Decoration -->
+<div class="fixed top-0 left-0 w-full pointer-events-none opacity-20">
+<svg class="w-full h-auto text-primary fill-current" preserveaspectratio="none" viewbox="0 0 400 100">
+<path d="M0,0 C150,50 250,50 400,0 L400,-50 L0,-50 Z"></path>
+</svg>
+</div>
+<div class="w-full max-w-md px-6 py-10 relative z-10 flex flex-col h-full min-h-[100dvh]">
+<!-- Header / Hero Section -->
+<header class="flex-1 flex flex-col justify-center items-center text-center space-y-6">
+<!-- Decorative Icon -->
+<div class="text-primary/60 mb-2 animate-fade-in-down">
+<span class="material-symbols-outlined text-5xl">spa</span>
+</div>
+<!-- Names -->
+<div class="space-y-2">
+<h1 class="text-primary-dark dark:text-[#e0e2d8] text-5xl md:text-6xl font-light tracking-tight italic leading-tight">
+                    Ana <br/> <span class="text-4xl not-italic text-primary/70">&amp;</span> Clara
+                </h1>
+</div>
+<!-- Date & Time -->
+<div class="flex flex-col items-center gap-1 mt-4">
+<div class="h-px w-16 bg-primary/40 mb-3"></div>
+<p class="text-primary-dark dark:text-[#d3d6cc] text-lg font-sans font-medium uppercase tracking-widest text-sm">
+                    24 de Outubro de 2024
+                </p>
+<p class="text-primary/80 dark:text-primary/60 text-base font-sans">
+                    16:00 horas
+                </p>
+</div>
+<!-- Image / Visual Element -->
+<div class="w-full max-w-[280px] aspect-[4/5] mt-8 rounded-t-full overflow-hidden shadow-xl shadow-primary/10 border-4 border-white/50 dark:border-white/5 mx-auto relative group">
+<div class="absolute inset-0 bg-primary/10 group-hover:bg-transparent transition-colors duration-500 z-10"></div>
+<div class="w-full h-full bg-cover bg-center transition-transform duration-700 group-hover:scale-105" data-alt="Soft focused botanical photo of olive branches and white flowers" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDvVxVL8RRUAbdkfUGze27pmQtFcSQpH66Qf5Dd3tU48_ON23veyRrPrCAzHXY4xPoXqr4keESeCYNbqooANFfmWA1rtjokjlq0KqA_E7IO8iMslgyg-IQqK0LAwUOjwNu0Ls4meA_srAuV5Kp0VXsVYuKA-xXtX9HMY8i_R5-hpSWvIUwyX7zKi-yKU2jsK-kRRVu0q-Bk9C4o5Km0SASnoub5mylM8PfjYfYRRrSyrrBGWDd4oIocNcPCNzmSRD0gvxS00tvgx3k');"></div>
+</div>
+</header>
+<!-- Action Buttons Section -->
+<main class="mt-10 pb-8 w-full flex flex-col gap-4 items-center">
+<button class="group relative w-full overflow-hidden rounded-2xl bg-primary hover:bg-primary-dark transition-all duration-300 shadow-lg shadow-primary/20 hover:shadow-primary/40 active:scale-[0.98]">
+<div class="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-white/10 to-transparent translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000"></div>
+<div class="relative flex items-center justify-between px-6 py-4">
+<span class="material-symbols-outlined text-[#FFFAF4] opacity-80 group-hover:scale-110 transition-transform">check_circle</span>
+<span class="text-[#FFFAF4] text-lg font-semibold tracking-wide font-sans flex-1 text-center pr-6">Confirmação de Presença</span>
+</div>
+</button>
+<button class="group w-full relative overflow-hidden rounded-2xl border border-primary/30 bg-white/50 dark:bg-white/5 hover:bg-primary/5 dark:hover:bg-primary/20 transition-all duration-300 active:scale-[0.98]">
+<div class="relative flex items-center justify-between px-6 py-4">
+<span class="material-symbols-outlined text-primary dark:text-primary-light opacity-80 group-hover:scale-110 transition-transform">location_on</span>
+<span class="text-primary-dark dark:text-[#e0e2d8] text-lg font-medium tracking-wide font-sans flex-1 text-center pr-6">Local do Evento</span>
+</div>
+</button>
+<button class="group w-full relative overflow-hidden rounded-2xl border border-primary/30 bg-white/50 dark:bg-white/5 hover:bg-primary/5 dark:hover:bg-primary/20 transition-all duration-300 active:scale-[0.98]">
+<div class="relative flex items-center justify-between px-6 py-4">
+<span class="material-symbols-outlined text-primary dark:text-primary-light opacity-80 group-hover:scale-110 transition-transform">redeem</span>
+<span class="text-primary-dark dark:text-[#e0e2d8] text-lg font-medium tracking-wide font-sans flex-1 text-center pr-6">Presentear as Noivas</span>
+</div>
+</button>
+</main>
+<!-- Footer -->
+<footer class="text-center pb-4">
+<p class="text-primary/60 text-sm font-display italic">
+                Com amor,<br/>esperamos vocês.
+            </p>
+</footer>
+</div>
+<!-- Background Texture/Pattern overlay -->
+<div class="fixed inset-0 pointer-events-none opacity-[0.03] dark:opacity-[0.05]" style="background-image: url('data:image/svg+xml,%3Csvg width=\'60\' height=\'60\' viewBox=\'0 0 60 60\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cg fill=\'none\' fill-rule=\'evenodd\'%3E%3Cg fill=\'%23000000\' fill-opacity=\'1\'%3E%3Cpath d=\'M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z\'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E');">
+</div>
+</body></html>
