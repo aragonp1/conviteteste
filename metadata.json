@@ -1,0 +1,7 @@
+{
+  "name": "Ana & Clara Wedding Invitation",
+  "description": "A refined, mobile-first wedding invitation app featuring RSVP tracking, venue details, and gift registry integration with a beautiful botanical aesthetic.",
+  "requestFramePermissions": [
+    "geolocation"
+  ]
+}
