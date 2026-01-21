@@ -7,7 +7,7 @@ interface GiftsScreenProps {
 
 const GiftsScreen: React.FC<GiftsScreenProps> = ({ onBack }) => {
   const [copied, setCopied] = useState(false);
-  const pixKey = "000.000.000-00";
+  const pixKey = "85985686820";
 
   const handleCopy = () => {
     navigator.clipboard.writeText(pixKey);
@@ -33,17 +33,7 @@ const GiftsScreen: React.FC<GiftsScreenProps> = ({ onBack }) => {
         </div>
 
         <div className="bg-white/40 backdrop-blur-sm rounded-3xl p-6 shadow-sm border border-primary/10 space-y-6">
-          <div className="space-y-4">
-            <h3 className="text-xl font-display text-primary-dark text-center">Lista de Presentes Online</h3>
-            <p className="text-gray-600 text-sm text-center">Acesse nossa lista completa em nossa loja parceira.</p>
-            <button className="w-full py-4 border-2 border-primary/30 hover:border-primary text-primary-dark rounded-2xl font-bold tracking-wide transition-all bg-white/20 flex items-center justify-center gap-2">
-              <span className="material-symbols-outlined">shopping_cart</span>
-              Ver Lista Completa
-            </button>
-          </div>
-
-          <div className="h-px bg-primary/10 w-full my-4"></div>
-
+          
           <div className="space-y-4 text-center">
             <h3 className="text-xl font-display text-primary-dark">Contribuição via PIX</h3>
             <p className="text-gray-600 text-sm">Se preferir, você pode enviar um presente em dinheiro diretamente para nossa lua de mel.</p>
