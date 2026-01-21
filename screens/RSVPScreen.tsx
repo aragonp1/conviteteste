@@ -79,78 +79,24 @@ const RSVPScreen: React.FC<RSVPScreenProps> = ({ onBack }) => {
             type="text" 
             value={name}
             onChange={(e) => setName(e.target.value)}
-            placeholder="Ex: João Silva"
+            placeholder="Seu nome aqui"
             className="w-full px-4 py-3 rounded-xl border-primary/20 focus:ring-primary focus:border-primary bg-white/50"
           />
         </div>
 
-        <div className="space-y-2">
-          <label className="block text-sm font-semibold text-primary/80 uppercase tracking-wider font-sans">
-            Você irá ao evento?
-          </label>
-          <div className="flex gap-4">
-            <button
-              type="button"
-              onClick={() => setIsAttending(true)}
-              className={`flex-1 py-3 rounded-xl border-2 transition-all font-medium ${isAttending ? 'bg-primary border-primary text-white shadow-md' : 'border-primary/20 text-primary-dark bg-white/30'}`}
-            >
-              Sim, com certeza!
-            </button>
-            <button
-              type="button"
-              onClick={() => setIsAttending(false)}
-              className={`flex-1 py-3 rounded-xl border-2 transition-all font-medium ${!isAttending ? 'bg-red-600 border-red-600 text-white shadow-md' : 'border-primary/20 text-primary-dark bg-white/30'}`}
-            >
-              Infelizmente não
-            </button>
-          </div>
-        </div>
-
-        {isAttending && (
-          <div className="space-y-2">
-            <label className="block text-sm font-semibold text-primary/80 uppercase tracking-wider font-sans">
-              Número de acompanhantes
-            </label>
-            <div className="flex items-center gap-4">
-              <button 
-                type="button"
-                onClick={() => setGuests(Math.max(1, guests - 1))}
-                className="w-10 h-10 rounded-full border border-primary/20 flex items-center justify-center text-primary"
-              >
-                <span className="material-symbols-outlined">remove</span>
-              </button>
-              <span className="text-xl font-bold w-8 text-center">{guests}</span>
-              <button 
-                type="button"
-                onClick={() => setGuests(guests + 1)}
-                className="w-10 h-10 rounded-full border border-primary/20 flex items-center justify-center text-primary"
-              >
-                <span className="material-symbols-outlined">add</span>
-              </button>
-            </div>
-          </div>
-        )}
-
+        
         <div className="space-y-2">
           <div className="flex justify-between items-end">
             <label className="block text-sm font-semibold text-primary/80 uppercase tracking-wider font-sans">
               Mensagem para as Noivas
             </label>
-            <button 
-              type="button"
-              onClick={handleGenerateAiMessage}
-              disabled={isGenerating}
-              className="text-xs text-primary flex items-center gap-1 hover:underline disabled:opacity-50"
-            >
-              <span className="material-symbols-outlined text-sm">auto_awesome</span>
-              {isGenerating ? 'Gerando...' : 'Gerar com IA'}
-            </button>
+           
           </div>
           <textarea 
             rows={4}
             value={message}
             onChange={(e) => setMessage(e.target.value)}
-            placeholder="Deixe um recado carinhoso..."
+            placeholder="Deixe um recado..."
             className="w-full px-4 py-3 rounded-xl border-primary/20 focus:ring-primary focus:border-primary bg-white/50"
           />
         </div>
