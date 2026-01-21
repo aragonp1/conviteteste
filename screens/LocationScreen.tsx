@@ -6,8 +6,8 @@ interface LocationScreenProps {
 }
 
 const LocationScreen: React.FC<LocationScreenProps> = ({ onBack }) => {
-  const address = "Rua das Flores, 123 - Jardim Botânico, São Paulo - SP";
-  const googleMapsUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(address)}`;
+  const address = "R. Sete de Setembro, 160 - Parangaba, Fortaleza - CE, 60720-080";
+  const googleMapsUrl = `https://maps.app.goo.gl/LYtKNPdVjkJf3JD4A`;
 
   return (
     <div className="flex-1 flex flex-col p-6 animate-fade-in-up">
@@ -20,11 +20,7 @@ const LocationScreen: React.FC<LocationScreenProps> = ({ onBack }) => {
 
       <div className="bg-white/40 backdrop-blur-sm rounded-3xl p-6 shadow-sm border border-primary/10 space-y-6">
         <div className="aspect-video w-full rounded-2xl overflow-hidden shadow-inner relative group">
-            <img 
-              src="https://picsum.photos/id/10/800/450" 
-              alt="Venue" 
-              className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
-            />
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15924.664647731039!2d-38.5634025!3d-3.7739993!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x541551d2d31416f%3A0xa2bd0b19b9ac8600!2sCart%C3%B3rio%20Cavalcanti%20Filho!5e0!3m2!1spt-BR!2sbr!4v1769032089030!5m2!1spt-BR!2sbr" width="400" height="250"></iframe>
             <div className="absolute inset-0 bg-primary/20"></div>
         </div>
 
@@ -45,19 +41,11 @@ const LocationScreen: React.FC<LocationScreenProps> = ({ onBack }) => {
             </div>
             <div>
               <h3 className="font-bold text-primary-dark font-sans">Horário</h3>
-              <p className="text-gray-600">A cerimônia começará pontualmente às 16:00.</p>
+              <p className="text-gray-600">A cerimônia começará pontualmente às 16:00. ~ A DEFINIR</p>
             </div>
           </div>
 
-          <div className="flex items-start gap-4">
-            <div className="p-2 bg-primary/10 rounded-full text-primary">
-              <span className="material-symbols-outlined">info</span>
-            </div>
-            <div>
-              <h3 className="font-bold text-primary-dark font-sans">Traje</h3>
-              <p className="text-gray-600">Passeio completo (Garden Party Style).</p>
-            </div>
-          </div>
+  
         </div>
 
         <a 
