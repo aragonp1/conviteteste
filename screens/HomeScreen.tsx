@@ -39,7 +39,7 @@ const HomeScreen: React.FC<HomeScreenProps> = ({ onNavigate }) => {
           <div className="absolute inset-0 bg-primary/10 group-hover:bg-transparent transition-colors duration-500 z-10"></div>
           <div 
             className="w-full h-full bg-cover bg-center transition-transform duration-700 group-hover:scale-105"
-            style={{ backgroundImage: `url('https://i.ibb.co/v45G4hy3/hf-20260122-122439-4b5cabd9-ae49-4f1a-98de-096f111d6aa5.jpg')` }}
+            style={{ backgroundImage: `url('https://i.ibb.co/V0zpMDJ8/foto2.png')` }}
           ></div>
         </div>
       </header>
