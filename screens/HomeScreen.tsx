@@ -35,7 +35,7 @@ const HomeScreen: React.FC<HomeScreenProps> = ({ onNavigate }) => {
         </div>
 
         {/* Visual Element */}
-        <div className="w-full max-w-[350px] aspect-[4/5] mt-8 rounded-t-full overflow-hidden shadow-xl shadow-primary/10 border-4 border-white/50 dark:border-white/5 mx-auto relative group">
+        <div className="w-full max-w-[450px] aspect-[4/3] mt-8 rounded-t-[10rem] overflow-hidden shadow-xl shadow-primary/10 border-4 border-white/50 dark:border-white/5 mx-auto relative group">
           <div className="absolute inset-0 bg-primary/10 group-hover:bg-transparent transition-colors duration-500 z-10"></div>
           <div 
             className="w-full h-full bg-cover bg-center transition-transform duration-700 group-hover:scale-105"
