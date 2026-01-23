@@ -15,7 +15,7 @@ interface GuestListScreenProps {
 }
 
 // COLOQUE A MESMA URL QUE VOCÊ USOU NO RSVPScreen.tsx
-const GOOGLE_SHEETS_WEBAPP_URL = ""; 
+const GOOGLE_SHEETS_WEBAPP_URL = "https://script.google.com/macros/s/AKfycby9x2r3-Lr1sDvJXN82IdmoJfZrkTuudHXWtpNZHykWnNqsJ756E_Gzf2VzvQSxybM5iA/exec"; 
 
 const GuestListScreen: React.FC<GuestListScreenProps> = ({ onBack }) => {
   const [guests, setGuests] = useState<Guest[]>([]);
@@ -143,3 +143,4 @@ const GuestListScreen: React.FC<GuestListScreenProps> = ({ onBack }) => {
 };
 
 export default GuestListScreen;
+
