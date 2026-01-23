@@ -22,7 +22,7 @@ const HomeScreen: React.FC<HomeScreenProps> = ({ onNavigate }) => {
             Janny <br /> <span className="text-4xl not-italic text-primary/70 font-sans">&amp;</span> Vitória
           </h1>
           <p className="text-gray-600 font-sans leading-relaxed italic">
-            "Ainda bem que o amor parou na minha porta."
+            Ainda bem que o amor parou na nossa porta.
           </p>
         </div>
 
