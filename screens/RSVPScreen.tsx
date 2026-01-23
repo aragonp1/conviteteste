@@ -6,24 +6,80 @@ interface RSVPScreenProps {
   onBack: () => void;
 }
 
+/**
+ * NOVO CÓDIGO PARA O GOOGLE APPS SCRIPT (Substitua o anterior por este):
+ * 
+ * function doPost(e) {
+ *   var sheet = SpreadsheetApp.getActiveSpreadsheet().getActiveSheet();
+ *   
+ *   // Cria o cabeçalho se a planilha estiver nova
+ *   if (sheet.getLastRow() === 0) {
+ *     sheet.appendRow(["Data", "Nome", "Mensagem"]);
+ *   }
+ *   
+ *   try {
+ *     var data = JSON.parse(e.postData.contents);
+ *     sheet.appendRow([
+ *       new Date(), 
+ *       data.name, 
+ *       data.message
+ *     ]);
+ *     return ContentService.createTextOutput(JSON.stringify({"result":"success"})).setMimeType(ContentService.MimeType.JSON);
+ *   } catch (f) {
+ *     return ContentService.createTextOutput(JSON.stringify({"result":"error", "error": f.toString()})).setMimeType(ContentService.MimeType.JSON);
+ *   }
+ * }
+ */
+const GOOGLE_SHEETS_WEBAPP_URL = "https://script.google.com/macros/s/AKfycby9x2r3-Lr1sDvJXN82IdmoJfZrkTuudHXWtpNZHykWnNqsJ756E_Gzf2VzvQSxybM5iA/exec"; 
+
 const RSVPScreen: React.FC<RSVPScreenProps> = ({ onBack }) => {
   const [name, setName] = useState('');
-  const [guests, setGuests] = useState(1);
-  const [isAttending, setIsAttending] = useState(true);
   const [message, setMessage] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
-  const [aiSuggestion, setAiSuggestion] = useState('');
   const [isGenerating, setIsGenerating] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const saveLocally = (data: any) => {
+    const existing = JSON.parse(localStorage.getItem('wedding_guests') || '[]');
+    // Mantemos isAttending e guests internamente para compatibilidade com a tela de Lista
+    existing.push({ 
+      ...data, 
+      isAttending: true, 
+      guests: 1, 
+      id: Date.now(), 
+      date: new Date().toISOString() 
+    });
+    localStorage.setItem('wedding_guests', JSON.stringify(existing));
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
-    // Simulate API call
+
+    const formData = { 
+      name, 
+      message 
+    };
+
+    saveLocally(formData);
+
+    if (GOOGLE_SHEETS_WEBAPP_URL) {
+      try {
+        await fetch(GOOGLE_SHEETS_WEBAPP_URL, {
+          method: 'POST',
+          mode: 'no-cors', 
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(formData)
+        });
+      } catch (err) {
+        console.warn("Erro ao enviar para o Sheets", err);
+      }
+    }
+
     setTimeout(() => {
       setIsSubmitting(false);
       setIsSuccess(true);
-    }, 1500);
+    }, 1000);
   };
 
   const handleGenerateAiMessage = async () => {
@@ -32,7 +88,7 @@ const RSVPScreen: React.FC<RSVPScreenProps> = ({ onBack }) => {
       const ai = new GoogleGenAI({ apiKey: process.env.API_KEY || '' });
       const response = await ai.models.generateContent({
         model: 'gemini-3-flash-preview',
-        contents: `Escreva uma mensagem curta e carinhosa de um convidado para as noivas Ana e Clara, confirmando presença no casamento. Seja poético e amigável.`,
+        contents: `Escreva uma mensagem curtíssima e carinhosa de um convidado para as noivas Ana e Clara, confirmando presença no casamento.`,
       });
       if (response.text) {
         setMessage(response.text.trim());
@@ -47,9 +103,9 @@ const RSVPScreen: React.FC<RSVPScreenProps> = ({ onBack }) => {
   if (isSuccess) {
     return (
       <div className="flex-1 flex flex-col items-center justify-center p-8 text-center animate-fade-in-up">
-        <span className="material-symbols-outlined text-7xl text-primary mb-4">check_circle</span>
+        <span className="material-symbols-outlined !text-7xl text-primary mb-4">check_circle</span>
         <h2 className="text-3xl font-display text-primary-dark mb-2">Obrigado!</h2>
-        <p className="text-gray-600 mb-8 font-sans">Sua confirmação foi enviada com sucesso. Mal podemos esperar para te ver!</p>
+        <p className="text-gray-600 mb-8 font-sans">Sua confirmação foi registrada. Mal podemos esperar para celebrar com você!</p>
         <button 
           onClick={onBack}
           className="px-8 py-3 bg-primary text-white rounded-full font-medium hover:bg-primary-dark transition-colors"
@@ -79,26 +135,37 @@ const RSVPScreen: React.FC<RSVPScreenProps> = ({ onBack }) => {
             type="text" 
             value={name}
             onChange={(e) => setName(e.target.value)}
-            placeholder="Seu nome aqui"
-            className="w-full px-4 py-3 rounded-xl border-primary/20 focus:ring-primary focus:border-primary bg-white/50"
+            placeholder="Ex: João Silva"
+            className="w-full px-4 py-3 rounded-xl border-primary/20 focus:ring-primary focus:border-primary bg-white/50 dark:bg-white/5 dark:text-white"
           />
         </div>
 
-        
         <div className="space-y-2">
           <div className="flex justify-between items-end">
             <label className="block text-sm font-semibold text-primary/80 uppercase tracking-wider font-sans">
               Mensagem para as Noivas
             </label>
-           
+            <button 
+              type="button"
+              onClick={handleGenerateAiMessage}
+              disabled={isGenerating}
+              className="text-xs text-primary flex items-center gap-1 hover:underline disabled:opacity-50"
+            >
+              <span className="material-symbols-outlined !text-sm">auto_awesome</span>
+              {isGenerating ? 'Gerando...' : 'IA'}
+            </button>
           </div>
           <textarea 
-            rows={4}
+            rows={5}
             value={message}
             onChange={(e) => setMessage(e.target.value)}
-            placeholder="Deixe um recado..."
-            className="w-full px-4 py-3 rounded-xl border-primary/20 focus:ring-primary focus:border-primary bg-white/50"
+            placeholder="Deixe um recado especial..."
+            className="w-full px-4 py-3 rounded-xl border-primary/20 focus:ring-primary focus:border-primary bg-white/50 dark:bg-white/5 dark:text-white"
           />
+        </div>
+
+        <div className="py-4 text-center">
+            <p className="text-sm text-primary/60 italic font-display">Ao enviar, sua presença será confirmada individualmente.</p>
         </div>
 
         <button 
@@ -109,7 +176,7 @@ const RSVPScreen: React.FC<RSVPScreenProps> = ({ onBack }) => {
           {isSubmitting ? (
             <span className="animate-spin material-symbols-outlined">progress_activity</span>
           ) : (
-            'Enviar Confirmação'
+            'Confirmar Presença'
           )}
         </button>
       </form>
