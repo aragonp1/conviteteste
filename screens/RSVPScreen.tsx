@@ -145,15 +145,7 @@ const RSVPScreen: React.FC<RSVPScreenProps> = ({ onBack }) => {
             <label className="block text-sm font-semibold text-primary/80 uppercase tracking-wider font-sans">
               Mensagem para as Noivas
             </label>
-            <button 
-              type="button"
-              onClick={handleGenerateAiMessage}
-              disabled={isGenerating}
-              className="text-xs text-primary flex items-center gap-1 hover:underline disabled:opacity-50"
-            >
-              <span className="material-symbols-outlined !text-sm">auto_awesome</span>
-              {isGenerating ? 'Gerando...' : 'IA'}
-            </button>
+           
           </div>
           <textarea 
             rows={5}
@@ -165,7 +157,7 @@ const RSVPScreen: React.FC<RSVPScreenProps> = ({ onBack }) => {
         </div>
 
         <div className="py-4 text-center">
-            <p className="text-sm text-primary/60 italic font-display">Ao enviar, sua presença será confirmada individualmente.</p>
+            <p className="text-sm text-primary/60 italic font-display">Ao enviar, sua presença será confirmada.</p>
         </div>
 
         <button 
