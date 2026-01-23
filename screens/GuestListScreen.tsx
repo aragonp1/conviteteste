@@ -34,30 +34,6 @@ const GuestListScreen: React.FC<GuestListScreenProps> = ({ onBack }) => {
       setIsLoading(false);
       return;
     }
-
-    try {
-      const response = await fetch(GOOGLE_SHEETS_WEBAPP_URL);
-      if (!response.ok) throw new Error('Erro ao buscar dados da planilha');
-      
-      const remoteData = await response.json();
-      
-      // Mapeia os dados caso as colunas da planilha tenham nomes diferentes
-      // Assume-se que a planilha retorna um array de objetos
-      const formattedData = remoteData.map((item: any, index: number) => ({
-        id: item.id || index,
-        name: item.name || item.Nome || 'Convidado',
-        message: item.message || item.Mensagem || '',
-        date: item.date || item.Data || new Date().toISOString(),
-        isAttending: true
-      }));
-
-      setGuests(formattedData.sort((a: any, b: any) => new Date(b.date).getTime() - new Date(a.date).getTime()));
-    } catch (err) {
-      console.error("Erro ao sincronizar com a planilha:", err);
-      setError("Não foi possível sincronizar com a planilha. Exibindo dados locais.");
-    } finally {
-      setIsLoading(false);
-    }
   };
 
   useEffect(() => {
@@ -77,7 +53,6 @@ const GuestListScreen: React.FC<GuestListScreenProps> = ({ onBack }) => {
         </div>
         <div className="text-right flex flex-col items-end">
             <div className="flex items-center gap-2">
-              {isLoading && <span className="animate-spin material-symbols-outlined !text-sm text-primary">progress_activity</span>}
               <span className="block text-2xl font-bold text-primary">{totalPeople}</span>
             </div>
             <span className="text-[10px] uppercase tracking-tighter text-gray-500">Confirmados</span>
@@ -125,19 +100,6 @@ const GuestListScreen: React.FC<GuestListScreenProps> = ({ onBack }) => {
           ))}
         </div>
       )}
-
-      {/* Botão flutuante para atualizar */}
-      <button 
-        onClick={fetchGuests}
-        disabled={isLoading}
-        className="fixed bottom-6 right-6 w-12 h-12 bg-primary text-white rounded-full shadow-lg flex items-center justify-center hover:scale-110 active:scale-95 transition-all disabled:opacity-50"
-      >
-        <span className={`material-symbols-outlined ${isLoading ? 'animate-spin' : ''}`}>refresh</span>
-      </button>
-
-      <div className="mt-auto p-4 bg-primary/5 rounded-xl text-[11px] text-primary-dark/60 text-center italic">
-        {GOOGLE_SHEETS_WEBAPP_URL ? 'Sincronizado com a nuvem.' : 'Nota: Usando apenas armazenamento local.'}
-      </div>
     </div>
   );
 };
