@@ -62,7 +62,7 @@ const GiftsScreen: React.FC<GiftsScreenProps> = ({ onBack }) => {
             {[
               { title: 'Jantar Romântico', price: 'R$ 200', icon: 'restaurant' },
               { title: 'Passeio Turístico', price: 'R$ 150', icon: 'directions_bus' },
-              { title: 'Café da Manhã', price: 'R$ 80', icon: 'coffee' }
+              { title: 'Café da Manhã', price: 'R$ 80', icon: 'coffee' },
               { title: 'Dia de Spa', price: 'R$ 200', icon: 'spa' },
               { title: 'Mimos de Viagem', price: 'R$ 150', icon: 'wallet_giftcard' },
               { title: 'kit Praia', price: 'R$ 80', icon: 'beach_access' }
