@@ -64,7 +64,7 @@ const GiftsScreen: React.FC<GiftsScreenProps> = ({ onBack }) => {
               { title: 'Passeio Turístico', price: 'R$ 150', icon: 'directions_bus' },
               { title: 'Café da Manhã', price: 'R$ 80', icon: 'coffee' },
               { title: 'Dia de Spa', price: 'R$ 200', icon: 'spa' },
-              { title: 'Mimos de Viagem', price: 'R$ 150', icon: 'wallet_giftcard' },
+              { title: 'Mimos de Viagem', price: 'R$ 150', icon: 'location_pin' },
               { title: 'kit Praia', price: 'R$ 80', icon: 'beach_access' }
             ].map((gift, idx) => (
               <div key={idx} className="flex-shrink-0 w-40 bg-white/60 p-4 rounded-2xl shadow-sm border border-primary/5 flex flex-col items-center gap-2 text-center">
