@@ -4,6 +4,7 @@ import HomeScreen from './screens/HomeScreen';
 import RSVPScreen from './screens/RSVPScreen';
 import LocationScreen from './screens/LocationScreen';
 import GiftsScreen from './screens/GiftsScreen';
+import GuestListScreen from './screens/GuestListScreen';
 import DecorativeBackground from './components/DecorativeBackground';
 
 enum Page {
@@ -11,6 +12,7 @@ enum Page {
   RSVP = 'rsvp',
   LOCATION = 'location',
   GIFTS = 'gifts',
+  LIST = 'list',
 }
 
 const App: React.FC = () => {
@@ -47,6 +49,8 @@ const App: React.FC = () => {
         return <LocationScreen onBack={() => navigateTo(Page.HOME)} />;
       case Page.GIFTS:
         return <GiftsScreen onBack={() => navigateTo(Page.HOME)} />;
+      case Page.LIST:
+        return <GuestListScreen onBack={() => navigateTo(Page.HOME)} />;
       default:
         return <HomeScreen onNavigate={navigateTo} />;
     }
