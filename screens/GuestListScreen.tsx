@@ -14,7 +14,7 @@ interface GuestListScreenProps {
   onBack: () => void;
 }
 
-// COLOQUE A MESMA URL QUE VOCÊ USOU NO RSVPScreen.tsx
+// URL DO GOOGLE APPS SCRIPT
 const GOOGLE_SHEETS_WEBAPP_URL = "https://script.google.com/macros/s/AKfycby9x2r3-Lr1sDvJXN82IdmoJfZrkTuudHXWtpNZHykWnNqsJ756E_Gzf2VzvQSxybM5iA/exec"; 
 
 const GuestListScreen: React.FC<GuestListScreenProps> = ({ onBack }) => {
@@ -23,17 +23,13 @@ const GuestListScreen: React.FC<GuestListScreenProps> = ({ onBack }) => {
   const [error, setError] = useState<string | null>(null);
 
   const fetchGuests = async () => {
-    setIsLoading(true);
-    setError(null);
-
-    // Primeiro, carrega o que tem no local como fallback rápido
-    const localData = JSON.parse(localStorage.getItem('wedding_guests') || '[]');
-    setGuests(localData.sort((a: any, b: any) => b.id - a.id));
-
     if (!GOOGLE_SHEETS_WEBAPP_URL) {
-      setIsLoading(false);
+      setError("A URL da planilha não foi configurada no código.");
       return;
     }
+
+    setIsLoading(true);
+    setError(null);
 
     try {
       const response = await fetch(GOOGLE_SHEETS_WEBAPP_URL);
@@ -41,8 +37,7 @@ const GuestListScreen: React.FC<GuestListScreenProps> = ({ onBack }) => {
       
       const remoteData = await response.json();
       
-      // Mapeia os dados caso as colunas da planilha tenham nomes diferentes
-      // Assume-se que a planilha retorna um array de objetos
+      // Mapeia os dados da planilha
       const formattedData = remoteData.map((item: any, index: number) => ({
         id: item.id || index,
         name: item.name || item.Nome || 'Convidado',
@@ -51,10 +46,11 @@ const GuestListScreen: React.FC<GuestListScreenProps> = ({ onBack }) => {
         isAttending: true
       }));
 
+      // Ordena por data (mais recentes primeiro)
       setGuests(formattedData.sort((a: any, b: any) => new Date(b.date).getTime() - new Date(a.date).getTime()));
     } catch (err) {
       console.error("Erro ao sincronizar com a planilha:", err);
-      setError("Não foi possível sincronizar com a planilha. Exibindo dados locais.");
+      setError("Não foi possível carregar a lista de convidados da nuvem.");
     } finally {
       setIsLoading(false);
     }
@@ -85,16 +81,21 @@ const GuestListScreen: React.FC<GuestListScreenProps> = ({ onBack }) => {
       </header>
 
       {error && (
-        <div className="mb-4 p-3 bg-amber-50 border border-amber-200 rounded-xl text-[11px] text-amber-700 flex items-center gap-2">
-          <span className="material-symbols-outlined !text-sm">warning</span>
-          {error}
+        <div className="mb-4 p-4 bg-red-50 border border-red-100 rounded-2xl text-xs text-red-600 flex items-center gap-3">
+          <span className="material-symbols-outlined !text-lg">error</span>
+          <p>{error}</p>
         </div>
       )}
 
-      {guests.length === 0 && !isLoading ? (
+      {isLoading && guests.length === 0 ? (
+        <div className="flex-1 flex flex-col items-center justify-center py-20">
+          <span className="animate-spin material-symbols-outlined !text-4xl text-primary/40">progress_activity</span>
+          <p className="mt-4 text-primary/40 font-sans text-sm">Carregando lista da nuvem...</p>
+        </div>
+      ) : guests.length === 0 && !isLoading ? (
         <div className="flex-1 flex flex-col items-center justify-center opacity-40 text-center py-20">
           <span className="material-symbols-outlined !text-6xl mb-4">group_off</span>
-          <p className="font-display">Nenhuma confirmação encontrada.</p>
+          <p className="font-display">Nenhuma confirmação encontrada na planilha.</p>
         </div>
       ) : (
         <div className="space-y-4 pb-20">
@@ -130,17 +131,12 @@ const GuestListScreen: React.FC<GuestListScreenProps> = ({ onBack }) => {
       <button 
         onClick={fetchGuests}
         disabled={isLoading}
-        className="fixed bottom-6 right-6 w-12 h-12 bg-primary text-white rounded-full shadow-lg flex items-center justify-center hover:scale-110 active:scale-95 transition-all disabled:opacity-50"
+        className="fixed bottom-6 right-6 w-12 h-12 bg-primary text-white rounded-full shadow-lg flex items-center justify-center hover:scale-110 active:scale-95 transition-all disabled:opacity-50 z-50"
       >
         <span className={`material-symbols-outlined ${isLoading ? 'animate-spin' : ''}`}>refresh</span>
       </button>
-
-      <div className="mt-auto p-4 bg-primary/5 rounded-xl text-[11px] text-primary-dark/60 text-center italic">
-        {GOOGLE_SHEETS_WEBAPP_URL ? 'Sincronizado com a nuvem.' : 'Nota: Usando apenas armazenamento local.'}
-      </div>
     </div>
   );
 };
 
 export default GuestListScreen;
-
