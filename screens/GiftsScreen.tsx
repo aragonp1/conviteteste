@@ -35,8 +35,8 @@ const GiftsScreen: React.FC<GiftsScreenProps> = ({ onBack }) => {
         <div className="bg-white/40 backdrop-blur-sm rounded-3xl p-6 shadow-sm border border-primary/10 space-y-6">
           
           <div className="space-y-4 text-center">
-            <h3 className="text-xl font-display text-primary-dark">Contribuição via PIX</h3>
-            <p className="text-gray-600 text-sm">Se preferir, você pode enviar um presente em dinheiro diretamente para nossa lua de mel.</p>
+            <h3 className="text-xl font-display text-primary-dark">Deixe aqui seu carinho em forma de presente</h3>
+            <p className="text-gray-600 text-sm">Caso queira nos presentear, você pode fazer parte das memórias da nossa Lua de Mel com uma contribuição via Pix</p>
             
             <div className="relative group">
               <div className="bg-primary/5 rounded-2xl p-4 border border-dashed border-primary/30 flex items-center justify-between">
@@ -61,8 +61,11 @@ const GiftsScreen: React.FC<GiftsScreenProps> = ({ onBack }) => {
         <div className="flex gap-4 overflow-x-auto pb-4 -mx-2 px-2 scrollbar-hide">
             {[
               { title: 'Jantar Romântico', price: 'R$ 200', icon: 'restaurant' },
-              { title: 'Passeio Turístico', price: 'R$ 150', icon: 'beach_access' },
+              { title: 'Passeio Turístico', price: 'R$ 150', icon: 'directions_bus' },
               { title: 'Café da Manhã', price: 'R$ 80', icon: 'coffee' }
+              { title: 'Dia de Spa', price: 'R$ 200', icon: 'spa' },
+              { title: 'Mimos de Viagem', price: 'R$ 150', icon: 'wallet_giftcard' },
+              { title: 'kit Praia', price: 'R$ 80', icon: 'beach_access' }
             ].map((gift, idx) => (
               <div key={idx} className="flex-shrink-0 w-40 bg-white/60 p-4 rounded-2xl shadow-sm border border-primary/5 flex flex-col items-center gap-2 text-center">
                 <span className="material-symbols-outlined text-primary/70">{gift.icon}</span>
