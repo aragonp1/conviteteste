@@ -21,7 +21,9 @@ const HomeScreen: React.FC<HomeScreenProps> = ({ onNavigate }) => {
           <h1 className="text-primary-dark dark:text-[#e0e2d8] text-5xl md:text-6xl font-light tracking-tight italic leading-tight font-display">
             Janny <br /> <span className="text-4xl not-italic text-primary/70 font-sans">&amp;</span> Vitória
           </h1>
-          <p>Ainda bem que o amor parou na minha porta.</p>
+          <p className="text-gray-600 font-sans leading-relaxed italic">
+            "Ainda bem que o amor parou na minha porta."
+          </p>
         </div>
 
         {/* Date & Time */}
