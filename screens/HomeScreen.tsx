@@ -79,7 +79,7 @@ const HomeScreen: React.FC<HomeScreenProps> = ({ onNavigate }) => {
             <span className="text-primary-dark dark:text-[#e0e2d8] text-lg font-medium tracking-wide font-sans flex-1 text-center pr-6">Presentear as Noivas</span>
           </div>
         </button>
-        <div className="text-center pb-8 px-6">
+        <div className="text-center px-6">
         <p className="text-primary/60 text-sm font-display italic leading-relaxed">
           Com amor,<br />esperamos vocês.
         </p>
