@@ -135,7 +135,7 @@ const RSVPScreen: React.FC<RSVPScreenProps> = ({ onBack }) => {
             type="text" 
             value={name}
             onChange={(e) => setName(e.target.value)}
-            placeholder="Ex: João Silva"
+            placeholder="Seu nome aqui"
             className="w-full px-4 py-3 rounded-xl border-primary/20 focus:ring-primary focus:border-primary bg-white/50 dark:bg-white/5 dark:text-white"
           />
         </div>
