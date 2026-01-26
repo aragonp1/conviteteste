@@ -6,7 +6,7 @@ import LocationScreen from './screens/LocationScreen';
 import GiftsScreen from './screens/GiftsScreen';
 import GuestListScreen from './screens/GuestListScreen';
 import DecorativeBackground from './components/DecorativeBackground';
-import Footer from '../components/Footer';
+import Footer from './components/Footer';
 
 enum Page {
   HOME = 'home',
