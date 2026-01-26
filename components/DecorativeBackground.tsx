@@ -1,5 +1,6 @@
 
 import React from 'react';
+import Footer from './Footer';
 
 const DecorativeBackground: React.FC = () => {
   return (
@@ -19,6 +20,7 @@ const DecorativeBackground: React.FC = () => {
         }}
       />
     </>
+    <Footer />
   );
 };
 
