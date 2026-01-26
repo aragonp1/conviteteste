@@ -6,6 +6,7 @@ import LocationScreen from './screens/LocationScreen';
 import GiftsScreen from './screens/GiftsScreen';
 import GuestListScreen from './screens/GuestListScreen';
 import DecorativeBackground from './components/DecorativeBackground';
+import Footer from '../components/Footer';
 
 enum Page {
   HOME = 'home',
@@ -62,6 +63,7 @@ const App: React.FC = () => {
       <div className="w-full max-w-md relative z-10 flex flex-col min-h-screen">
         {renderPage()}
       </div>
+      <Footer />
     </div>
   );
 };
