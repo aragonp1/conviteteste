@@ -30,7 +30,7 @@ const HomeScreen: React.FC<HomeScreenProps> = ({ onNavigate }) => {
         <div className="flex flex-col items-center gap-1 mt-4">
           <div className="h-px w-16 bg-primary/40 mb-3"></div>
           <p className="text-primary-dark dark:text-[#d3d6cc] text-lg font-sans font-medium uppercase tracking-widest">
-            24 de Outubro de 2024 ~ (a definir)
+            13 de Junho de 2026
           </p>
           <p className="text-primary/80 dark:text-primary/60 text-base font-sans">
             16:00 horas
