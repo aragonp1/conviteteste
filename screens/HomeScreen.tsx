@@ -33,7 +33,7 @@ const HomeScreen: React.FC<HomeScreenProps> = ({ onNavigate }) => {
             13 de Junho de 2026
           </p>
           <p className="text-primary/80 dark:text-primary/60 text-base font-sans">
-            16:00 horas
+            11:00 horas
           </p>
         </div>
 
